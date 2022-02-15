@@ -21,6 +21,7 @@ export class UsersService {
       ...createUserInput,
       id: this.users.length + 1
     }
+    console.log(user);
      this.users.push(user);
     return user;
   }
