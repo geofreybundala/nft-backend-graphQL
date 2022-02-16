@@ -8,11 +8,13 @@ export class UsersService {
     {
       id: 1,
       username: 'geofrey',
+      email: 'test@gmail.com',
       password: 'not-secure'
     },
     {
       id: 2,
       username: 'pascal',
+      email: 'tester@gmail',
       password: 'not-secure'
     }
   ]
@@ -21,7 +23,7 @@ export class UsersService {
       ...createUserInput,
       id: this.users.length + 1
     }
-    console.log(user);
+    
      this.users.push(user);
     return user;
   }
@@ -30,8 +32,8 @@ export class UsersService {
     return this.users;
   }
 
-  findOne(username: string) {
-    return this.users.find((user) => user.username === username);
+  findOne(email: string) {
+    return this.users.find((user) => user.email === email);
   }
 
 }

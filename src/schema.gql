@@ -3,6 +3,7 @@
 # ------------------------------------------------------
 
 input CreateUserInput {
+  email: String!
   password: String!
   username: String!
 }
@@ -13,8 +14,8 @@ type LoginResponse {
 }
 
 input LoginUserInput {
+  email: String!
   password: String!
-  username: String!
 }
 
 type Mutation {
@@ -29,11 +30,13 @@ type Query {
 }
 
 input SignupUserInput {
+  email: String!
   password: String!
   username: String!
 }
 
 type User {
+  email: String!
   id: Int!
   username: String!
 }

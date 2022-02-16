@@ -13,9 +13,9 @@ export class AuthService {
         private jwtService: JwtService
     ){}
 
-    async validateUser(username: string, password: string): Promise <any> {
-        const user = await this.usersService.findOne(username);
-
+    async validateUser(email: string, password: string): Promise <any> {
+        const user = await this.usersService.findOne(email);
+        
         const valid = await bycrypt.compare(password, user?.password);
 
         if(user && valid) {
@@ -28,14 +28,14 @@ export class AuthService {
 
     async login(user: User){
         return {
-            access_token: this.jwtService.sign({username: user.username, sub : user.id}),
+            access_token: this.jwtService.sign({email: user.email, sub : user.id}),
             user
         }
     }
 
 
     async signup(signupUserInput: SignupUserInput){
-         const user = await this.usersService.findOne(signupUserInput.username);
+         const user = await this.usersService.findOne(signupUserInput.email);
 
          if(user){
              throw new Error("User already exists!")
